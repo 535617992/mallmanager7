@@ -4,6 +4,7 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 import '@/assets/css/index.css'
 import App from './App'
+import moment from 'moment'
 import router from './router'
 import MyHttpSever from '@/plugins/http.js'
 
@@ -14,7 +15,10 @@ Vue.use(MyHttpSever)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-
+//全局过滤器
+Vue.filter('fmtdate',(v)=>{
+  return moment(v).format('YYYY-MM-DD')
+})
 new Vue({
   el: '#app',
   router,

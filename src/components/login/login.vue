@@ -34,10 +34,12 @@ export default {
        async handlelogin(){
            const res=await this.$http.post('login',this.formdata)
            .then((res)=>{
-
+               // 0. 保存用户token
+            // 将来在home组件渲染之前 先判断token有没有
+           
                console.log(res)
                const {meta:{msg,status},data}=res.data
-
+            const token = localStorage.setItem('token', data.token)
                if(status===200){
                    this.$router.push({name:'home'})
                    //提示登录成功
